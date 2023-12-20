@@ -18,6 +18,7 @@ int main()
     InitWindow(screenWidth, screenHeight, _title);
     SetTargetFPS(60);
 
+
     //ball properties
     ball.radius =20;
     ball.x = screenWidth/2;
@@ -40,6 +41,7 @@ int main()
 
         //update ball position
         ball.UpdateBall();
+        player.updatePlayer();
 
         //clearing screen
         ClearBackground(BLACK);
