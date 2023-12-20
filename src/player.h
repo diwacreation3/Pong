@@ -5,6 +5,10 @@
 
 class PlayerPaddle
 {
+    protected:
+    void LimitMovement();
+
+
     public:
     float x ,y;
     float width , height;

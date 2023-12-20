@@ -12,4 +12,6 @@ void playerAi::updateAi(int ball_y)
     {
         y = y + speed;
     }
+
+    LimitMovement();
 }

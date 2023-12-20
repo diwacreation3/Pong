@@ -2,6 +2,9 @@
 
 using namespace std;
 
+int playerScore = 0;
+int opponentScore =0;
+
 Ball ball;
 PlayerPaddle player;
 playerAi opponent;
@@ -53,6 +56,18 @@ int main()
         ball.UpdateBall();
         player.updatePlayer();
         opponent.updateAi(ball.y);
+
+        //checking for collision
+        if(CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{player.x, player.y, player.width, player.height }))
+        {
+            ball.speed_x *= -1;
+        }
+
+        //ball collision for Ai
+        if(CheckCollisionCircleRec(Vector2{ball.x, ball.y}, ball.radius, Rectangle{opponent.x, opponent.y , opponent.width, opponent.height}))
+        {
+            ball.speed_x *= -1;
+        }
 
         //Drawing
         ClearBackground(BLACK);
