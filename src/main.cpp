@@ -3,8 +3,8 @@
 using namespace std;
 
 Color Green = Color{38, 186, 156, 255};
-Color DarkGreen = Color{20, 160, 133, 255};
-Color LightGreen = Color{129, 204, 184, 255};
+Color DarkGreen = Color{30, 160, 133, 255};
+Color LightGreen = Color{129, 233, 184, 255};
 
 Ball ball;
 PlayerPaddle player;
@@ -18,12 +18,16 @@ const int screenHeight = 800;
 const char _title[20] = {"Pong"};
 int main()
 {
-    bool gameState ;
+    bool gameState;
     cout << "Starting the game " << endl;
 
     // initilize window
     InitWindow(screenWidth, screenHeight, _title);
     SetTargetFPS(60);
+
+    std::string iconPath = std::string( "diwacreation3.ico");
+    Image icon = LoadImage(iconPath.c_str());
+    SetWindowIcon(icon);
 
     // ball properties
     ball.radius = 20;
@@ -50,31 +54,31 @@ int main()
     while (WindowShouldClose() == false)
     {
         BeginDrawing();
-        if(gameState == false)
+        if (gameState == false)
         {
-          DrawText("Press Enter To Play Game", screenWidth /3, screenHeight /2 , 30, RAYWHITE);   
+            DrawText("Press Enter To Play Game", screenWidth / 3, screenHeight / 2, 30, RAYWHITE);
         }
-        if(IsKeyPressed(KEY_ENTER))
+        if (IsKeyPressed(KEY_ENTER))
         {
             gameState = true;
         }
 
         ClearBackground(Green);
 
-        if(gameState == true)
+        if (gameState == true)
         {
-          game();   
+            game();
         }
-        
+
         if (ball.opponentScore == 10)
         {
             DrawText("AI Won ", screenWidth / 2.5, screenHeight / 3, 80, WHITE);
-            gameState = false; 
+            gameState = false;
         }
-        if(ball.playerScore == 10)
+        if (ball.playerScore == 10)
         {
-          DrawText("You Won ", screenWidth / 2.5, screenHeight / 3, 80, WHITE);
-            gameState = false;  
+            DrawText("You Won ", screenWidth / 2.5, screenHeight / 3, 80, WHITE);
+            gameState = false;
         }
 
         EndDrawing();
