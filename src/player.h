@@ -11,7 +11,7 @@ class PlayerPaddle
     int speed;
 
     //draw player paddle
-    void DrawPlayerPaddle();
+    void DrawPaddle();
     
     //update player position 
     void updatePlayer();

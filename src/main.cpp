@@ -1,9 +1,11 @@
-#include "player.h"
+#include "ai-paddle.h"
 
 using namespace std;
 
 Ball ball;
 PlayerPaddle player;
+playerAi opponent;
+
 
 int main()
 {
@@ -31,7 +33,15 @@ int main()
     player.height = 120;
     player.x = screenWidth - player.width - 10;
     player.y = screenHeight /2 - player.height /3;
-    player.speed = 6;
+    player.speed = 9;
+
+    //opponent ai properties 
+    opponent.height = 120;
+    opponent.width = 25;
+    opponent.x = 10;
+    opponent.y = screenHeight/2 - opponent.height/2;
+    opponent.speed = 6;
+
 
 
     //main game loop
@@ -39,27 +49,21 @@ int main()
     {
         BeginDrawing();
 
-        //update ball position
+        //update 
         ball.UpdateBall();
         player.updatePlayer();
+        opponent.updateAi(ball.y);
 
-        //clearing screen
+        //Drawing
         ClearBackground(BLACK);
-
         //Draw center line 
         DrawLine(screenWidth/ 2 ,0 , screenWidth /2, screenHeight, WHITE);
         ball.DrawBall();
+
         //drawCircle
-        // DrawCircle(screenWidth/2, screenHeight/2, 30, WHITE);
-        player.DrawPlayerPaddle();
-
-        //player
-        DrawRectangle(0, screenHeight/2 -60 , 25, 120, WHITE);
-
-        //opponent
-        DrawRectangle(screenWidth -35, screenHeight /2 -60, 25 ,120, WHITE);
-
-        
+        DrawCircle(screenWidth/2, screenHeight/2, 30, WHITE);
+        opponent.DrawPaddle();
+        player.DrawPaddle();
 
 
         EndDrawing();

@@ -1,6 +1,6 @@
 #include "player.h"
 
-void PlayerPaddle::DrawPlayerPaddle()
+void PlayerPaddle::DrawPaddle()
 {
     DrawRectangle(x,y , width, height, WHITE );
 
