@@ -1,8 +1,9 @@
 #include "ball.h"
 
+
 void Ball::DrawBall()
 {
-        DrawCircle(x, y,radius, WHITE);
+        DrawCircle(x, y,radius, Yellow);
 
 }
 
@@ -17,8 +18,26 @@ void Ball::UpdateBall()
             speed_y *= -1;
         }
 
-        if(x + radius >= GetScreenWidth() || x- radius <= 0)
+        if(x + radius >= GetScreenWidth()) //ai wins
         {
-            speed_x *= -1;
+            opponentScore++;
+            resetBall();
         }
+        
+        
+         if( x- radius <= 0)
+        {
+            playerScore++;
+            resetBall();
+        }
+}
+
+void Ball::resetBall()
+{
+    x = GetScreenWidth() /2 ;
+    y = GetScreenHeight() /2;
+
+    int speedChoice[2] = {-1, 1};
+    speed_x *= speedChoice[GetRandomValue(0,1)];
+    speed_y *= speedChoice[GetRandomValue(0,1)];
 }

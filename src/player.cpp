@@ -15,7 +15,7 @@ void PlayerPaddle::LimitMovement()
 
 void PlayerPaddle::DrawPaddle()
 {
-    DrawRectangle(x, y, width, height, WHITE);
+    DrawRectangleRounded(Rectangle{x, y, width, height}, 0.8, 0, WHITE);
 }
 
 void PlayerPaddle::updatePlayer()

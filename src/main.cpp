@@ -2,8 +2,11 @@
 
 using namespace std;
 
-int playerScore = 0;
-int opponentScore =0;
+Color Green = Color{38, 186, 156, 255};
+Color DarkGreen = Color{20, 160, 133, 255};
+Color LightGreen = Color{129, 204, 184, 255};
+
+
 
 Ball ball;
 PlayerPaddle player;
@@ -70,15 +73,19 @@ int main()
         }
 
         //Drawing
-        ClearBackground(BLACK);
+        ClearBackground(DarkGreen);
+        DrawRectangle(screenWidth /2 ,0, screenWidth/2 , screenHeight,Green);
+        DrawCircle(screenWidth /2 , screenHeight/2 ,150 , LightGreen);
         //Draw center line 
         DrawLine(screenWidth/ 2 ,0 , screenWidth /2, screenHeight, WHITE);
         ball.DrawBall();
 
-        //drawCircle
-        DrawCircle(screenWidth/2, screenHeight/2, 30, WHITE);
         opponent.DrawPaddle();
         player.DrawPaddle();
+
+        DrawText(TextFormat("%i",ball.opponentScore), screenWidth /4 -20 , 20, 80 , WHITE);
+        DrawText(TextFormat("%i",ball.playerScore), 3 *screenWidth /4 - 20 , 20, 80 , WHITE);
+
 
 
         EndDrawing();
