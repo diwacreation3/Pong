@@ -50,7 +50,7 @@ int main()
         DrawLine(screenWidth/ 2 ,0 , screenWidth /2, screenHeight, WHITE);
         ball.DrawBall();
         //drawCircle
-        DrawCircle(screenWidth/2, screenHeight/2, 30, WHITE);
+        // DrawCircle(screenWidth/2, screenHeight/2, 30, WHITE);
         player.DrawPlayerPaddle();
 
         //player
